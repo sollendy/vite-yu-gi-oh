@@ -14,8 +14,9 @@
         },
         created() {
             axios.get('https://db.ygoprodeck.com/api/v7/cardinfo.php?num=50&offset=0').then((res)=>{
-                this.store.yugiCards = res.data.name;
-                console.log(res.data.name);
+                this.store.yugiCards = res.data.data;
+                console.log(res.data.data);
+                console.log(this.store.yugiCards[0])
             });
         }
     }
@@ -24,12 +25,15 @@
 
 <template>
   <div id="lista-carte">
-    <OggettoCard v-for="carta in store.yugiCards">
-        <img :src="carta.card_images.image_urls" alt="">
-    </OggettoCard>
+    <OggettoCard v-for="carta in store.yugiCards" :card="carta"></OggettoCard>
   </div>
 </template>
 
 <style lang="scss" scoped>
-
+    #lista-carte {
+        display: flex;
+        flex-flow: row wrap;
+        justify-content: space-between;
+        // border: 1px solid black;
+    }
 </style>
