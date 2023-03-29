@@ -2,7 +2,7 @@
     import {store} from "../store.js";
     import axios from "axios";
     import AppSearch from "./AppSearch.vue";
-    import OggettoCard from "./oggettoCard.vue"
+    import OggettoCard from "./OggettoCard.vue"
     export default {
         name: "AppMain",
         data() {
@@ -25,9 +25,12 @@
             cercaCarta() {
                 let apiValore = this.store.APIcall
                 if(this.store.nomeCarta != "") {
+                    apiValore += `fname=${this.store.nomeCarta}`;
                     console.log(apiValore)
-                    apiValore += `&name=${this.store.nomeCarta}`;
                 }
+                axios.get(apiValore).then((res) => {
+                    this.store.yugiCards = res.data.data
+                });
             }
         }
     }
