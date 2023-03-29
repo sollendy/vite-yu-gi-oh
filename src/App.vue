@@ -1,9 +1,11 @@
 <script>
   import AppMain from './components/AppMain.vue';
+import AppSearch from './components/AppSearch.vue';
   export default {
     components: {
-      AppMain
-    }
+      AppSearch,
+      AppMain,
+    },
   }
 </script>
 

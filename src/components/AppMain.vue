@@ -1,6 +1,7 @@
 <script>
     import {store} from "../store.js";
     import axios from "axios";
+    import AppSearch from "./AppSearch.vue";
     import OggettoCard from "./oggettoCard.vue"
     export default {
         name: "AppMain",
@@ -10,6 +11,7 @@
             }
         },
         components: {
+            AppSearch,
             OggettoCard,
         },
         created() {
@@ -18,12 +20,23 @@
                 console.log(res.data.data);
                 console.log(this.store.yugiCards[0])
             });
+        },
+        methods: {
+            cercaCarta() {
+                let apiValore = this.store.APIcall
+                if(this.store.nomeCarta != "") {
+                    console.log(apiValore)
+                    apiValore += `&name=${this.store.nomeCarta}`;
+                }
+            }
         }
     }
-
 </script>
 
 <template>
+    <div class="barra-ricerca">
+        <AppSearch @ricerca="cercaCarta()"></AppSearch>
+    </div>
   <div id="lista-carte">
     <OggettoCard v-for="carta in store.yugiCards" :card="carta"></OggettoCard>
   </div>

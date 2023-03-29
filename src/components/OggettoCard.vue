@@ -17,8 +17,11 @@
         <img :src="card.card_images[0].image_url" alt="yu-gi-oh carta">
         <div id="card-specs">
             <strong>{{ card.name }}</strong>
+            <hr>
             <div>{{ card.frameType }}</div>
+            <hr>
             <div>{{ card.race }}</div>
+            <hr>
             <em>{{ card.card_prices[0].amazon_price }}$</em>
         </div>
     </div>
@@ -30,8 +33,11 @@
         margin-bottom: 10px;
         border: 2px solid black;
         text-align: center;
+        background-color: rgb(209, 203, 203);
         img {
             width: 100%;
         }
+        // #card-specs {
+        // }
     }
 </style>
