@@ -25,7 +25,7 @@
             cercaCarta() {
                 let apiValore = this.store.APIcall
                 if(this.store.nomeCarta != "") {
-                    apiValore += `fname=${this.store.nomeCarta}`;
+                    apiValore += `&fname=${this.store.nomeCarta}`;
                     console.log(apiValore)
                 }
                 axios.get(apiValore).then((res) => {
